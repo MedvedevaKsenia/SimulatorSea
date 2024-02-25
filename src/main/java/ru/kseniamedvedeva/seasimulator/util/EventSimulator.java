@@ -113,8 +113,8 @@ public class EventSimulator {
 
     private void buildNestEvent(Penguin penguin) {
         int energy = penguin.getEnergy();
-        energy = energy - 30; // 7 - 30 = -27
-        penguin.setEnergy(checkEnergy(energy)); // return 0
+        energy = energy - 30;
+        penguin.setEnergy(checkEnergy(energy));
         checkEnergyIfHealthZero(penguin);
         System.out.println("Penguin built a nest! -30 energy");
     }
