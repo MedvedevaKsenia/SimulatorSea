@@ -35,7 +35,7 @@ public class EventSimulator {
 
     private void sleepEvent(Penguin penguin) {
         int energy = penguin.getEnergy();
-        energy = energy + 7;
+        energy = energy + 10;
         penguin.setEnergy(checkEnergy(energy));
         checkEnergyIfHealthZero(penguin);
         System.out.println("Penguin slept! +7 energy");
@@ -43,10 +43,10 @@ public class EventSimulator {
 
     private void waitEvent(Penguin penguin) {
         int energy = penguin.getEnergy();
-        energy = energy - 5;
+        energy = energy - 10;
         penguin.setEnergy(checkEnergy(energy));
         checkEnergyIfHealthZero(penguin);
-        System.out.println("Penguin checked water! -5 energy");
+        System.out.println("Penguin checked water! -10 energy");
     }
 
     private void swimEvent(Penguin penguin) {
@@ -73,7 +73,7 @@ public class EventSimulator {
         penguin.setEnergy(checkEnergy(energy));
         penguin.setHealth(checkHealth(health));
         checkEnergyIfHealthZero(penguin);
-        System.out.println("Penguin ate fish! -10 energy, " + ((int) (penguin.getBEAK() * 4)) + " health");
+        System.out.println("Penguin ate fish! -10 energy, +" + ((int) (penguin.getBEAK() * 4)) + " health");
     }
 
     private void eatCrayfishEvent(Penguin penguin) {
@@ -84,7 +84,7 @@ public class EventSimulator {
         penguin.setEnergy(checkEnergy(energy));
         penguin.setHealth(checkHealth(health));
         checkEnergyIfHealthZero(penguin);
-        System.out.println("Penguin ate crayfish! -7 energy, " + ((int) (penguin.getBEAK() * 2)) + " health");
+        System.out.println("Penguin ate crayfish! -7 energy, +" + ((int) (penguin.getBEAK() * 2)) + " health");
     }
 
     private void leopardSealAttacksEvent(Penguin penguin) {
@@ -113,8 +113,8 @@ public class EventSimulator {
 
     private void buildNestEvent(Penguin penguin) {
         int energy = penguin.getEnergy();
-        energy = energy - 30;
-        penguin.setEnergy(checkEnergy(energy));
+        energy = energy - 30; // 7 - 30 = -27
+        penguin.setEnergy(checkEnergy(energy)); // return 0
         checkEnergyIfHealthZero(penguin);
         System.out.println("Penguin built a nest! -30 energy");
     }
@@ -132,19 +132,9 @@ public class EventSimulator {
         if (penguin.getEnergy() <= 0) {
             int health = penguin.getHealth();
             health = health - 5;
-            if (health < 0) {
-                health = 0;
-            }
+            checkHealth(health);
             penguin.setHealth(health);
         }
-    }
-
-    private int checkHealth(int health) {
-        if (health < 0) {
-            return 0;
-        } else if (health > 100) {
-            return 100;
-        } else return health;
     }
 
     private int checkEnergy(int energy) {
@@ -153,5 +143,13 @@ public class EventSimulator {
         } else if (energy > 100) {
             return 100;
         } else return energy;
+    }
+
+    private int checkHealth(int health) {
+        if (health < 0) {
+            return 0;
+        } else if (health > 100) {
+            return 100;
+        } else return health;
     }
 }
