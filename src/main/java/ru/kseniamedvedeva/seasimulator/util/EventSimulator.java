@@ -29,12 +29,28 @@ public class EventSimulator {
         System.out.println("Penguin slept! +7 energy");
     }
 
-    private void swimEvent(Penguin penguin) {
+    private void waitEvent(Penguin penguin) {
         int energy = penguin.getEnergy();
         energy = energy - 5;
         penguin.setEnergy(checkEnergy(energy));
         checkEnergyIfHealthZero(penguin);
-        System.out.println("Penguin swam! -5 energy");
+        System.out.println("Penguin checked water! -5 energy");
+    }
+
+    private void swimEvent(Penguin penguin) {
+        int energy = penguin.getEnergy();
+        energy = energy - 15;
+        penguin.setEnergy(checkEnergy(energy));
+        checkEnergyIfHealthZero(penguin);
+        System.out.println("Penguin swam! -15 energy");
+    }
+
+    private void walkEvent(Penguin penguin) {
+        int energy = penguin.getEnergy();
+        energy = energy - 5;
+        penguin.setEnergy(checkEnergy(energy));
+        checkEnergyIfHealthZero(penguin);
+        System.out.println("Penguin walked on land! -5 energy");
     }
 
     private void eatFishEvent(Penguin penguin) {
@@ -45,7 +61,18 @@ public class EventSimulator {
         penguin.setEnergy(checkEnergy(energy));
         penguin.setHealth(checkHealth(health));
         checkEnergyIfHealthZero(penguin);
-        System.out.println("Penguin ate fish! -10 energy, +8 health");
+        System.out.println("Penguin ate fish! -10 energy, " + ((int) (penguin.getBEAK() * 4)) + " health");
+    }
+
+    private void eatCrayfishEvent(Penguin penguin) {
+        int energy = penguin.getEnergy();
+        int health = penguin.getHealth();
+        energy = energy - 7;
+        health = health + (int) (penguin.getBEAK() * 2);
+        penguin.setEnergy(checkEnergy(energy));
+        penguin.setHealth(checkHealth(health));
+        checkEnergyIfHealthZero(penguin);
+        System.out.println("Penguin ate crayfish! -7 energy, " + ((int) (penguin.getBEAK() * 2)) + " health");
     }
 
     private void leopardSealAttacksEvent(Penguin penguin) {
@@ -54,6 +81,30 @@ public class EventSimulator {
         penguin.setHealth(checkHealth(health));
         checkEnergyIfHealthZero(penguin);
         System.out.println("Leopard Seal attacks penguin! -20 health");
+    }
+
+    private void furSealAttacksEvent(Penguin penguin) {
+        int health = penguin.getHealth();
+        health = health - 20;
+        penguin.setHealth(checkHealth(health));
+        checkEnergyIfHealthZero(penguin);
+        System.out.println("Fur Seal attacks penguin! -20 health");
+    }
+
+    private void sharkAttacksEvent(Penguin penguin) {
+        int health = penguin.getHealth();
+        health = health - 15;
+        penguin.setHealth(checkHealth(health));
+        checkEnergyIfHealthZero(penguin);
+        System.out.println("Shark attacks penguin! -15 health");
+    }
+
+    private void buildNestEvent(Penguin penguin) {
+        int energy = penguin.getEnergy();
+        energy = energy - 30;
+        penguin.setEnergy(checkEnergy(energy));
+        checkEnergyIfHealthZero(penguin);
+        System.out.println("Penguin built a nest! -30 energy");
     }
 
     private boolean checkStatus(Penguin penguin) {
