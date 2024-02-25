@@ -1,6 +1,7 @@
 package ru.kseniamedvedeva.seasimulator.util;
 
 import ru.kseniamedvedeva.seasimulator.entity.Penguin;
+clear
 
 public class EventSimulator {
     public void startSimulation(Penguin penguin) throws InterruptedException {
