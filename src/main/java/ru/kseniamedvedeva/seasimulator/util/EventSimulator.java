@@ -7,14 +7,26 @@ public class EventSimulator {
         while (checkStatus(penguin)) {
             int eventNumber = (int) (Math.random() * 100);
             Thread.sleep(1000);
-            if (eventNumber >= 0 && eventNumber < 40) {
+            if (eventNumber >= 0 && eventNumber < 10) {
                 sleepEvent(penguin);
-            } else if (eventNumber >= 40 && eventNumber < 70) {
+            } else if (eventNumber >= 10 && eventNumber < 20) {
+                waitEvent(penguin);
+            } else if (eventNumber >= 20 && eventNumber < 30) {
                 swimEvent(penguin);
-            } else if (eventNumber >= 70 && eventNumber < 80) {
+            } else if (eventNumber >= 30 && eventNumber < 35) {
+                walkEvent(penguin);
+            } else if (eventNumber >= 35 && eventNumber < 40) {
                 eatFishEvent(penguin);
-            } else if (eventNumber >= 80 && eventNumber < 100) {
+            } else if (eventNumber >= 40 && eventNumber < 50) {
+                eatCrayfishEvent(penguin);
+            } else if (eventNumber >= 50 && eventNumber < 70) {
                 leopardSealAttacksEvent(penguin);
+            } else if (eventNumber >= 70 && eventNumber < 80) {
+                furSealAttacksEvent(penguin);
+            } else if (eventNumber >= 80 && eventNumber < 90) {
+                sharkAttacksEvent(penguin);
+            } else if (eventNumber >= 90 && eventNumber < 100) {
+                buildNestEvent(penguin);
             }
         }
         System.out.println("Oh no! Penguin is dead!");
