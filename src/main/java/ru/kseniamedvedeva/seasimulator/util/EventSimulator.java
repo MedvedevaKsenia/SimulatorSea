@@ -121,10 +121,8 @@ public class EventSimulator {
 
     private boolean checkStatus(Penguin penguin) {
         System.out.println("Health = " + penguin.getHealth() + " Energy = " + penguin.getEnergy());
-        if (penguin.getHealth() <= 0) {
-            return false;
-        } else {
-            return true;
+        {
+            return (penguin.getHealth() <= 0);
         }
     }
 
