@@ -122,7 +122,7 @@ public class EventSimulator {
     private boolean checkStatus(Penguin penguin) {
         System.out.println("Health = " + penguin.getHealth() + " Energy = " + penguin.getEnergy());
         {
-            return (penguin.getHealth() <= 0);
+            return penguin.getHealth() <= 0;
         }
     }
 
